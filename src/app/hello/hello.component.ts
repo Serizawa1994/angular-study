@@ -18,11 +18,9 @@ export class HelloComponent implements OnInit {
   
   ngOnInit() {
     this.title = "Hello-app";
-    this.message = "ngModelを使う"
+    this.message = "FormControlを使う"
     this.myControl = new FormGroup({
-      name: new FormControl(''),
-      mail: new FormControl(''),
-      age: new FormControl(0)
+      control: new FormControl()
     });
   }
   
