@@ -1,13 +1,14 @@
 <div id="body">
     <h1>{{title}}</h1>
     <p>{{message}}</p>
-    <form [formGroup] = "myControl" (ngSubmit)="onSubmit()">
+    <form [formGroup] = "myControl" (submit)="onSubmit()">
         <div>
-            <select formControlName="control">
-                <option>windows</option>
-                <option>macOS</option>
-                <option>Linux</option>
-                <option>ChromeOS</option>
+            <select formControlName="control" size="5" multiple>
+                <option>android</option>
+                <option>iOS</option>
+                <option>blackcherry</option>
+                <option>symbian</option>
+                <option>Fucsia</option>
             </select>
         </div>
         <div>
