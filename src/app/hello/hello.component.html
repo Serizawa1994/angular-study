@@ -1,15 +1,12 @@
 <div id="body">
     <h1>{{title}}</h1>
-    <p>{{message}}</p>
-    <div [ngSwitch]="_switch">
-        <p *ngSwitchCase="'one'">First Paragraph!</p>
-        <p *ngSwitchCase="'two'">Second Paragraph!</p>
-        <p *ngSwitchCase="'three'">Third Paragraph!</p>
-        <p *ngSwitchDefault>Default Paragraph!</p>
-    </div>
-    <select #sel (change)="doSelect(sel.value)">
-        <option>one</option>
-        <option>two</option>
-        <option>three</option>
-    </select>
+    <p
+    [style.font-size.pt]="36"
+    [style.color]="'#F00'">{{message}}:36</p>
+    <p
+    [style.font-size.pt]="28"
+    [style.color]="'#F99'">{{message}}:28</p>
+    <p
+    [style.font-size.pt]="20"
+    [style.color]="'#Fcc'">{{message}}:20</p>
 </div>

@@ -16,7 +16,7 @@ export class HelloComponent implements OnInit {
   
   ngOnInit() {
     this.title = "Hello-app";
-    this.message = "please type .....";
+    this.message = "Font size";
     this._switch = "one";
   }
   
