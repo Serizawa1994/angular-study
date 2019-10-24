@@ -1,12 +1,7 @@
 <div id="body">
     <h1>{{title}}</h1>
-    <p
-    [style.font-size.pt]="36"
-    [style.color]="'#F00'">{{message}}:36</p>
-    <p
-    [style.font-size.pt]="28"
-    [style.color]="'#F99'">{{message}}:28</p>
-    <p
-    [style.font-size.pt]="20"
-    [style.color]="'#Fcc'">{{message}}:20</p>
+    <p [ngClass]="nowClass">ngClass: {{message}}</p>
+    <input type="checkbox" #ck1 (change)="check(ck1.checked, ck2.checked, ck3.checked);">Thin
+    <input type="checkbox" #ck2 (change)="check(ck1.checked, ck2.checked, ck3.checked);">Large
+    <input type="checkbox" #ck3 (change)="check(ck1.checked, ck2.checked, ck3.checked);">Frame
 </div>
