@@ -9,17 +9,18 @@ export class HelloComponent implements OnInit {
   
   title:string;
   message:string;
-  styleClass:string;
+  visible:boolean;
 
   constructor() {
-    setInterval(
-      ()=>{this.styleClass = this.styleClass == "red" ? " " : "red";
-      console.log(this.styleClass);  
-      },1000);
   }
   
   ngOnInit() {
     this.title = "Hello-app";
-    this.message = "This is My First Component!!";
+    this.message = "please type .....";
+    this.visible = true;
+  }
+  
+  doClick(){
+    this.visible = !this.visible;
   }
 }
