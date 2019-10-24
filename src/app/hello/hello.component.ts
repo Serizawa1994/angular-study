@@ -21,4 +21,8 @@ export class HelloComponent implements OnInit {
     this.message = "ngModelを使う"
     this.myControl = new FormControl('ok.');
   }
+  
+  doClick(){
+    this.message = "「" + this.myControl.value + "」と書きましたね。";
+  }
 }
