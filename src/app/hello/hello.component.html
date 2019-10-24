@@ -4,7 +4,10 @@
     <form [formGroup] = "myControl" (ngSubmit)="onSubmit()">
         <div>
             <label>
-                <input type="checkbox" formControlName="control">Check Box
+                <input type="radio" value="male" formControlName="control">Male
+            </label>
+            <label>
+                <input type="radio" value="female" formControlName="control">Female
             </label>
         </div>
         <div>
