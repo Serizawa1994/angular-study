@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
@@ -10,7 +11,7 @@ export class HelloComponent implements OnInit {
   
   title:string;
   message:string;
-  text1:string;
+  myControl:FormControl;
 
   constructor() {
   }
@@ -18,6 +19,6 @@ export class HelloComponent implements OnInit {
   ngOnInit() {
     this.title = "Hello-app";
     this.message = "ngModelを使う"
-    this.text1 = "";
+    this.myControl = new FormControl('ok.');
   }
 }
