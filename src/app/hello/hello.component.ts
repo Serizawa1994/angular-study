@@ -9,7 +9,7 @@ export class HelloComponent implements OnInit {
   
   title:string;
   message:string;
-  visible:boolean;
+  data:string[];
 
   constructor() {
   }
@@ -17,10 +17,8 @@ export class HelloComponent implements OnInit {
   ngOnInit() {
     this.title = "Hello-app";
     this.message = "please type .....";
-    this.visible = true;
-  }
-  
-  doClick(){
-    this.visible = !this.visible;
+    this.data = ["最初の項目です",
+                "２番目の項目です",
+                "最後の項目です"];
   }
 }

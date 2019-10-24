@@ -1,9 +1,7 @@
 <div id="body">
     <h1>{{title}}</h1>
-    <p *ngIf = "visible" (click)="doClick()" class="red">
-        This is TRUE message.
-    </p>
-    <p *ngIf = "visible == false" (click)="doClick()">
-        This is FALSE message.
-    </p>
+    <p>{{message}}</p>
+    <ul>
+        <li *ngFor = "let item of data">{{item}}</li>
+    </ul>
 </div>
