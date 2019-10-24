@@ -9,7 +9,7 @@ export class HelloComponent implements OnInit {
   
   title:string;
   message:string;
-  data:string[];
+  _switch:string;
 
   constructor() {
   }
@@ -17,8 +17,10 @@ export class HelloComponent implements OnInit {
   ngOnInit() {
     this.title = "Hello-app";
     this.message = "please type .....";
-    this.data = ["最初の項目です",
-                "２番目の項目です",
-                "最後の項目です"];
+    this._switch = "one";
+  }
+  
+  doSelect(val){
+    this._switch = val;
   }
 }
