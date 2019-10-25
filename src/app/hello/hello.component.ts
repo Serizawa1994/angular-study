@@ -9,17 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HelloComponent implements OnInit {
   
   title:string;
-  message:string[];
+  message:string;
 
   constructor() {}
   
   ngOnInit() {
     this.title = "Hello-app";
-    this.message = [
-      "新しいコンポーネントです。",
-      "複数のメッセージを表示できます。",
-      "属性は配列を設定します。"
-      ];
+    this.message = "one,two,three,four,five,six,sevem,eight,nine,ten";
   }
   
 }
