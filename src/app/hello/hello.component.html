@@ -1,18 +1,32 @@
 <div id="body">
     <h1>{{title}}</h1>
     <p>{{message}}</p>
-    <form [formGroup] = "myControl" (submit)="onSubmit()">
-        <div>
-            <select formControlName="control" size="5" multiple>
-                <option>android</option>
-                <option>iOS</option>
-                <option>blackcherry</option>
-                <option>symbian</option>
-                <option>Fucsia</option>
-            </select>
-        </div>
-        <div>
-            <input type="submit" value="click">
-        </div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>
+                    <input type="text" name="name" ngModel>
+                </td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>
+                    <input type="text" name="mail" ngModel>
+                </td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>
+                    <input type="number" name="age" ngModel>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" value="click">
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
