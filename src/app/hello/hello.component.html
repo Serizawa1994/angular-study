@@ -6,6 +6,9 @@
             <tr>
                 <th>Name</th>
                 <td>
+                    <div *ngIf="name.invalid">
+                        Nameは必要項目です。
+                    </div>
                     <div>
                         <input type="text" formControlName="name">
                     </div>
@@ -14,6 +17,9 @@
             <tr>
                 <th>Mail</th>
                 <td>
+                    <div *ngIf="mail.invalid">
+                        メールアドレスが必要です。
+                    </div>
                     <div>
                         <input type="text" formControlName="mail">
                     </div>
@@ -22,8 +28,11 @@
             <tr>
                 <th>Age</th>
                 <td>
+                    <div *ngIf="age.invalid">
+                        １歳以上１５０歳以下で入力してください。
+                    </div>
                     <div>
-                        <input type="number" formControlName="age">
+                        <input [disabled]="myControl.invalid" type="number" formControlName="age">
                     </div>
                 </td>
             </tr>
