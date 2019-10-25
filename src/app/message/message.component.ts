@@ -1,28 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent implements OnInit {
-  private _content:string[];
 
+export class MessageComponent implements OnInit {
+  @Input() content:string[];
+  @Output() action = new EventEmitter<MouseEvent>();
+  
   constructor() { }
 
   ngOnInit() {}
   
-  @Input()
-  set content(msgs:string){
-    this._content = msgs.split(',');
-  }
-  
-  get content(){
-    return this._content.join(',');
-  }
-  
-  doClick(){
-    this._content.pop();
+  doAction(event){
+    this.action.emit(event);
   }
 
 }
