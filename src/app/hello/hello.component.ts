@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core'; 
 import { MessageComponent } from '../message/message.component';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-hello',
@@ -13,7 +14,7 @@ export class HelloComponent implements OnInit {
   message:string[];
   lastTarget:any;
   lastColor:string;
-  input1:string;
+  input1:FormControl;
   
   @ViewChild(MessageComponent)
   private msgComponent: MessageComponent;
@@ -23,17 +24,17 @@ export class HelloComponent implements OnInit {
   ngOnInit() {
     this.title = "Hello-app";
     this.message = ["First item", "Second item", "Third item"];
-    this.input1 = "";
+    this.input1 = new FormControl('');
   }
   
   push(){
-    if(this.input1 == ""){
+    if(this.input1.value == ""){
       alert("テキストを入力してください");
       return
     }
     
-    this.msgComponent.push(this.input1);
-    this.input1 = "";
+    this.msgComponent.push(this.input1.value);
+    this.input1 = new FormControl('');
   }
   
   pop(){

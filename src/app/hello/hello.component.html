@@ -4,7 +4,7 @@
         add item ...
     </div>
     <div>
-        <input type="text" [(ngModel)]="input1">
+        <input type="text" [formControl]="input1">
         <button (click)="push()">Push</button>
         <button (click)="pop()">Pop</button>
     </div>
