@@ -11,14 +11,11 @@ export class HelloComponent implements OnInit {
   
   title:string;
   message:string;
-  private service:MycheckService
 
-  constructor(service:MycheckService) {
-    this.service = service;
-  }
+  constructor(private service:MycheckService) {}
   
   ngOnInit() {
     this.title = "Hello-app";
-    this.message = this.service.hello("Taro");
+    this.message = 'data size' + this.service.size;
   }
 }
