@@ -3,6 +3,7 @@ import { MycheckService } from "../mycheck.service";
 import { ActivatedRoute } from "@angular/router";
 import { FormControl } from "@angular/forms";
 import { fromEvent } from "rxjs";
+import { filter } from "rxjs/operators";
 
 @Component({
   selector: 'app-message',
@@ -20,14 +21,28 @@ export class MessageComponent implements OnInit {
   constructor(private service:MycheckService) {}
 
   ngOnInit() {
-    this.input = new FormControl("");
+    this.input = new FormControl('');
     this.message = "mydata list.";
-    
     const btn = this.btn.nativeElement;
+    
     fromEvent(btn, "click")
+    .pipe(filter((res:MouseEvent, n:number)=>{
+      console.log(n);
+      
+      if(res.shiftKey){
+        return false;
+      }
+      
+      return true;
+    }))
+    
     .subscribe((event:MouseEvent)=>{
-      this.doAction();  
-    })
+      this.doAction();
+    });
+  }
+  
+  updateData(ck){
+    this.service.updateData(ck);
   }
   
   getData(){

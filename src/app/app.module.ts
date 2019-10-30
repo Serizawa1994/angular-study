@@ -11,7 +11,7 @@ import{ HttpClientModule } from "@angular/common/http";
 
 const routes:Routes = [
   {path: "hello", component: HelloComponent},
-  {path: "msg/:id", component: MessageComponent}
+  {path: "msg", component: MessageComponent}
 ];
   
 @NgModule({

@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { from, Observable } from "rxjs";
+import { map, filter } from "rxjs/operators";
 
 class MyData {
   data:string = "";
@@ -19,29 +20,40 @@ class Person {
 
 export class MycheckService {
   
-  private mydata:MyData = new MyData();
+  private mydata;
 
   constructor(private client:HttpClient) {
-    let ob:Observable = from(fetch("/assets/data.json"));
-    
-    ob.subscribe((resp)=>{
-      resp.json().then((val)=>{
-        this.mydata = val;
-      })
-    })
+    this.         updateData(true);
+    this.mydata = new MyData();
   }
   
-  ngOnInit(){}
+  updateData(f:boolean){
+    this.client.get("/assets/data.json")
+    .pipe(
+      map((res:Response)=>{
+        return f ? res : null;
+      })
+    )
+    
+    .subscribe((result)=>{
+      if(result != null){
+        this.mydata = result;
+      }else{
+        this.mydata = new MyData();
+      }
+    });
+  }
   
   get(n:number){
     return this.mydata.list[n];
   }
   
+  get size(){
+    return this.mydata.list.length;
+  }
+  
   get list(){
-    return this.mydata.list.map((v)=>{
-      v.name = "*****";
-      return v;
-    });
+    return this.mydata.list;
   }
   
   get data(){
