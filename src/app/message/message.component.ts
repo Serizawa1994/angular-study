@@ -16,8 +16,8 @@ export class MessageComponent implements OnInit {
   input:FormControl;
   message:string;
   
-  @ViewChild("btn") btn: ElementRef;
-  @ViewChild("check")check: ElementRef;
+  @ViewChild("btn",{static:true}) btn: ElementRef;
+  @ViewChild("check",{static:true})check: ElementRef;
   
   constructor(private service:MycheckService) {}
 

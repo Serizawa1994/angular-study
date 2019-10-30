@@ -34,7 +34,6 @@ export class MycheckService {
         return f ? res : null;
       })
     )
-    
     .subscribe((result)=>{
       if(result != null){
         this.mydata = result;
