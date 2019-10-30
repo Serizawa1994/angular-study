@@ -17,6 +17,7 @@ export class MessageComponent implements OnInit {
   message:string;
   
   @ViewChild("btn") btn: ElementRef;
+  @ViewChild("check")check: ElementRef;
   
   constructor(private service:MycheckService) {}
 
@@ -24,24 +25,27 @@ export class MessageComponent implements OnInit {
     this.input = new FormControl('');
     this.message = "mydata list.";
     const btn = this.btn.nativeElement;
+    const check = this.check.nativeElement;
     
     fromEvent(btn, "click")
     .pipe(filter((res:MouseEvent, n:number)=>{
       console.log(n);
-      
       if(res.shiftKey){
         return false;
       }
-      
       return true;
     }))
-    
     .subscribe((event:MouseEvent)=>{
       this.doAction();
     });
+    
+    fromEvent(check, "change")
+    .subscribe((event:MouseEvent)=>{
+      this.updateData(check.checked);
+    });
   }
   
-  updateData(ck){
+  updateData(ck:boolean){
     this.service.updateData(ck);
   }
   
