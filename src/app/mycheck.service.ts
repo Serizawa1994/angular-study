@@ -1,37 +1,50 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { from, Observable } from "rxjs";
+
+class MyData {
+  data:string = "";
+  list:Person[] = [];
+}
+
+class Person {
+  name:string;
+  mail:string;
+  tel:string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class MycheckService {
-  private data:string[];
+  
+  private mydata:MyData = new MyData();
 
-  constructor() { 
-    this.data = [];
+  constructor(private client:HttpClient) {
+    let ob:Observable = from(fetch("/assets/data.json"));
+    
+    ob.subscribe((resp)=>{
+      resp.json().then((val)=>{
+        this.mydata = val;
+      })
+    })
   }
   
-  push (item:string){
-    this.data.push(item);
-  }
+  ngOnInit(){}
   
-  pop(){
-    this.data.pop();
-  }
-  
-  get (n:number){
-    return this.data[n];
-  }
-  
-  get size(){
-    return this.data.length;
-  }
-  
-  get json(){
-    return JSON.stringify(this.data);
+  get(n:number){
+    return this.mydata.list[n];
   }
   
   get list(){
-    return JSON.parse(JSON.stringify(this.data));
+    return this.mydata.list.map((v)=>{
+      v.name = "*****";
+      return v;
+    });
+  }
+  
+  get data(){
+    return this.mydata.data;
   }
 }

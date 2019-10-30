@@ -26,9 +26,7 @@ const routes:Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(
-      routes,
-      {enableTracing: true})
+    RouterModule.forRoot(routes),
   ],
   
   bootstrap: [AppComponent],

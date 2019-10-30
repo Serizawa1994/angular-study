@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { MycheckService } from "../mycheck.service";
 import { ActivatedRoute } from "@angular/router";
+import { FormControl } from "@angular/forms";
+import { fromEvent } from "rxjs";
 
 @Component({
   selector: 'app-message',
@@ -10,15 +12,36 @@ import { ActivatedRoute } from "@angular/router";
 })
 
 export class MessageComponent implements OnInit {
-  content:string[];
+  input:FormControl;
+  message:string;
   
-  constructor(private service:MycheckService,
-  private route:ActivatedRoute) {}
+  @ViewChild("btn") btn: ElementRef;
+  
+  constructor(private service:MycheckService) {}
 
   ngOnInit() {
-    this.service.push("message data");
-    this.service.push("params: " + JSON.stringify(this.route.snapshot.paramMap));
-    this.content = this.service.list;
+    this.input = new FormControl("");
+    this.message = "mydata list.";
+    
+    const btn = this.btn.nativeElement;
+    fromEvent(btn, "click")
+    .subscribe((event:MouseEvent)=>{
+      this.doAction();  
+    })
+  }
+  
+  getData(){
+    return this.service.data;
+  }
+  
+  getList(){
+    return this.service.list;
+  }
+  
+  doAction(){
+    let n = parseInt(this.input.value);
+    let p = this.service.get(n);
+    this.message = JSON.stringify(p);
   }
 
 }

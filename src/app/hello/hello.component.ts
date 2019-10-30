@@ -18,8 +18,11 @@ export class HelloComponent implements OnInit {
   
   title:string;
   message:string;
+  private mydata:MyData;
 
-  constructor(private client: HttpClient) {}
+  constructor(private client: HttpClient, private service:MycheckService) {
+    this.mydata = new MyData();
+  }
   
   ngOnInit() {
     this.title = "Hello-app";
@@ -28,10 +31,7 @@ export class HelloComponent implements OnInit {
   }
   
   getData(){
-    this.client.get('/assets/data.json')
-    .subscribe((result:MyData)=>{
-      this.message = 'data: ' + result.data;
-    });
+    this.message = this.service.data;
   }
   
 }

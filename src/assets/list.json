@@ -1,5 +1,4 @@
 {
-    "data":"this is a sample data",
     "list":[
         {"name": "Taro", "mail":"taro@yamada", "tel":"090-999-999"},
         {"name": "Hanako", "mail":"hanako@flower", "tel":"080-888-888"}, 
